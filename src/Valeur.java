@@ -2,9 +2,11 @@ import java.io.Serializable;
 
 public class Valeur implements Serializable {
 	private String valeur;
+	private int k;
 
-    public Valeur(String val) {
+    public Valeur(int key, String val) {
         this.valeur = val;
+        this.k = key;
     }
 
     public String getValeur(){
@@ -13,6 +15,14 @@ public class Valeur implements Serializable {
     
 	public void setValeur(String s){
 		valeur = s;
+	}
+	
+	public int getK(){
+		return k;
+	}
+	
+	public void setk(int key){
+		k = key;
 	}
 }
 
