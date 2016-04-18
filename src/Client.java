@@ -32,7 +32,7 @@ public class Client {
                 list.add("Bonjour Joris !");
                 list.add("J'envoie une liste !");
                 
-                ComplexeData d = new ComplexeData(list);
+                ComplexeData d = new ComplexeData(1, list);
                 outputStream.writeObject(d);
 
             } catch (SocketException se) {

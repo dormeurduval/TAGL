@@ -1,4 +1,4 @@
-public class Test{
+public class launchServer{
 public static void main(String[] args){
 
 	ThreadPooledServer server = new ThreadPooledServer(9000);
