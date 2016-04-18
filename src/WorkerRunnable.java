@@ -43,7 +43,7 @@ time +
 			
 			ComplexeData d = (ComplexeData) input.readObject();
 			
-			complexeCache.putIfAbsent(1, d.getValeur());
+			complexeCache.putIfAbsent(d.getK(), d.getValeur());
 			
 			System.out.println("Object cached !");
 			
