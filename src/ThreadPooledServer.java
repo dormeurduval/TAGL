@@ -15,13 +15,13 @@ public class ThreadPooledServer implements Runnable{
     protected Thread       runningThread= null;
     protected ExecutorService threadPool =
         Executors.newFixedThreadPool(10);
-    protected ConcurrentHashMap<String, Integer> cache = null;
-    protected ConcurrentHashMap<Integer, List<String>> complexeCache;
+    
+    protected ConcurrentHashMap<Integer, Object> complexeCache;
 
     public ThreadPooledServer(int port){
         this.serverPort = port;
-        cache = new ConcurrentHashMap<String, Integer>();
-        complexeCache = new ConcurrentHashMap<Integer, List<String>>();
+        
+        complexeCache = new ConcurrentHashMap<Integer, Object>();
     }
 
     public void run(){
@@ -42,7 +42,7 @@ public class ThreadPooledServer implements Runnable{
                     "Error accepting client connection", e);
             }
             this.threadPool.execute(
-                new WorkerRunnable(clientSocket, cache, complexeCache));
+                new WorkerRunnable(clientSocket, complexeCache));
         }
         this.threadPool.shutdown();
         System.out.println("Server Stopped.") ;

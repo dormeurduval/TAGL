@@ -16,37 +16,78 @@ public class Client {
 
     }
 
-    public void communicate() {
-
-        while (!isConnected) {
-            try {
+    public boolean connect(){
+    	//while(!isConnected){
+    		try {
                 socket = new Socket("localhost", 9000);
+                
                 System.out.println("Connected");
                 isConnected = true;
-                outputStream = new ObjectOutputStream(socket.getOutputStream());
                 
-                //Valeur student = new Valeur("Bijoy");
-                //System.out.println("Object to be written = " + student.getValeur());
-                //outputStream.writeObject(student);
-                List<String> list = new ArrayList<String>();
-                list.add("Bonjour Joris !");
-                list.add("J'envoie une liste !");
-                
-                ComplexeData d = new ComplexeData(1, list);
-                outputStream.writeObject(d);
-
-            } catch (SocketException se) {
+    		} catch (SocketException se) {
                 se.printStackTrace();
                 // System.exit(0);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+    		return isConnected;
+    	//}
+    	
     }
+    
+    public void sendData(Data d){
+    	if(isConnected){
+    		try {
+				outputStream = new ObjectOutputStream(socket.getOutputStream());
+				outputStream.writeObject(d);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+    	}else
+    		System.out.println("not connected send");
+    }
+    
+    public void removeData(int key){
+    	if(isConnected){
+    		Data d = new Data(key, "**remove**");
+    		try {
+				outputStream = new ObjectOutputStream(socket.getOutputStream());
+				outputStream.writeObject(d);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+    	}else
+    		System.out.println("not connected remove");
+    }
+    
+    
+  
 
     public static void main(String[] args) {
         Client client = new Client();
-        client.communicate();
+        Client client2 = new Client();
+        Client client3 = new Client();
+        
+        if(client.connect() && client2.connect() && client3.connect()){
+        	Data d = new Data(1, "Bonjour!");
+        	client.sendData(d);
+        	
+        	List<String> list = new ArrayList<String>();
+        	list.add("c'est une liste !");
+        	Data s = new Data(2, list);
+        	
+        	client2.sendData(s);
+        	
+        	client3.removeData(2);
+        }
+        	
+        
+       
     }
 }
-
