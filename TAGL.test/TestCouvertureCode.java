@@ -101,7 +101,7 @@ public class TestCouvertureCode {
 			cpt++;
 			assertEquals( "Test random",b.getObject(key),x);
 			assertEquals( "Test random",b.getTaille_courante(),cpt);
-			
+	
 		}
 	}
 
