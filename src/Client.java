@@ -50,7 +50,7 @@ public class Client {
     		System.out.println("not connected send");
     }
     
-    public void removeData(int key){
+    public  void removeData(int key){
     	if(isConnected){
     		Data d = new Data(key, "**remove**");
     		try {
@@ -66,7 +66,21 @@ public class Client {
     		System.out.println("not connected remove");
     }
     
-    
+    public void showBase(){
+    	if(isConnected){
+    		Data d = new Data(0, "**showBase**");
+    		try {
+				outputStream = new ObjectOutputStream(socket.getOutputStream());
+				outputStream.writeObject(d);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+    	}else
+    		System.out.println("not connected showBase");
+    }
   
 
     public static void main(String[] args) {
@@ -77,14 +91,14 @@ public class Client {
         if(client.connect() && client2.connect() && client3.connect()){
         	Data d = new Data(1, "Bonjour!");
         	client.sendData(d);
-        	
+
         	List<String> list = new ArrayList<String>();
-        	list.add("c'est une liste !");
+        	list.add("c'est une liste !"); list.add("yeah!");
         	Data s = new Data(2, list);
-        	
         	client2.sendData(s);
-        	
-        	client3.removeData(2);
+        	client2.showBase();
+
+        	client3.showBase();
         }
         	
         

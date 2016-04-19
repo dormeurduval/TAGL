@@ -1,9 +1,10 @@
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.HashMap;
+//import java.awt.List;
+//import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BaseDonnee {
-	HashMap base;
+	
+	ConcurrentHashMap<Integer, Object> base;
 	int last_object;
 	int taille_courante;
 	int taille_max;
@@ -13,14 +14,14 @@ public class BaseDonnee {
 	}
 	
 	BaseDonnee(int taille_max){
-		base = new HashMap();
+		base = new ConcurrentHashMap<Integer, Object>();
 		taille_courante =0;
 		this.taille_max = taille_max;
 	
 	}
 	
 	public int addObject(Object o){
-		if(taille_courante== taille_max){
+		if(taille_courante == taille_max){
 			base.remove(last_object);
 		}	
 		else
@@ -38,8 +39,8 @@ public class BaseDonnee {
 		taille_courante -- ;
 	}
 	
-	public void addObjectList(Object o,int key){
-		if(taille_courante== taille_max)
+	/*public void addObjectList(Object o,int key){
+		if(taille_courante == taille_max)
 			base.remove(last_object);
 		else
 			taille_courante ++;
@@ -60,6 +61,10 @@ public class BaseDonnee {
 		l.remove(l.size()-1);
 		taille_courante -- ;
 		
+	}*/
+	
+	public ConcurrentHashMap<Integer, Object> getBase(){
+		return base;
 	}
 	
 	
