@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BaseDonnee {
 	
 	ConcurrentHashMap<Integer, Object> base;
-	int last_object;
+	int first_object;
 	int taille_courante;
 	int taille_max;
 	
@@ -22,26 +22,29 @@ public class BaseDonnee {
 	
 	public int addObject(Object o){
 		if(taille_courante == taille_max){
-			base.remove(last_object);
+			base.remove(first_object);
 		}	
 		else
 			taille_courante ++;
 
 		int key = o.hashCode();
 		base.putIfAbsent(key, o);
-		last_object = key;
+		if(base.size()==1)
+			first_object = key;
 		return key;
 		
 	}
 	
 	public void suppObject(int key){
+		boolean isonthebase = base.containsKey(key);
 		base.remove(key);
-		taille_courante -- ;
+		if(isonthebase)
+			taille_courante -- ;
 	}
 	
 	/*public void addObjectList(Object o,int key){
 		if(taille_courante == taille_max)
-			base.remove(last_object);
+			base.remove(first_object);
 		else
 			taille_courante ++;
 		
@@ -51,7 +54,7 @@ public class BaseDonnee {
 		
 		l.add(o);
 		base.putIfAbsent(key, l);
-		last_object = key;
+		first_object = key;
 
 		
 	}
@@ -67,6 +70,9 @@ public class BaseDonnee {
 		return base;
 	}
 	
+	public Object getObject(int key){
+		return base.get(key);
+	}
 	
 	
 	
