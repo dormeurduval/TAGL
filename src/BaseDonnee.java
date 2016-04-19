@@ -39,7 +39,7 @@ public class BaseDonnee {
 		taille_courante -- ;
 	}
 	
-	public void addObjectList(Object o,int key){
+	/*public void addObjectList(Object o,int key){
 		if(taille_courante == taille_max)
 			base.remove(last_object);
 		else
@@ -61,7 +61,7 @@ public class BaseDonnee {
 		l.remove(l.size()-1);
 		taille_courante -- ;
 		
-	}
+	}*/
 	
 	public ConcurrentHashMap<Integer, Object> getBase(){
 		return base;
