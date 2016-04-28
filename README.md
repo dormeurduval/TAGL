@@ -9,7 +9,6 @@ Le projet est organisé en deux parties :
 Le client/serveur :
                   - La parallélisation :Le serveur peut gérer plusieurs clients (10) simultanément grâce à un pool de threads( class       "ThreadPooled" ).
                     Les écritures dans la base de donnée sont bien gérées par une structure de type ConcurrentHashMap(class "Data").
-                    
                   - Le serveur : La base de donnée contenant les relations clée/valeurs peut-être accédée à distance grâce à un schema client/serveur( les class sont le "Client", le "launchServer" et le "WorkerRunnable").
                   
 La Base de donnée :
