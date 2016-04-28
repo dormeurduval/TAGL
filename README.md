@@ -2,11 +2,11 @@
 TAGL projet
 
 
-Le projet est organisé en deux parties : <br/>;
-                                        - La Base de donnée pour la manipulation des données dans la HashMap \n
+Le projet est organisé en deux parties : <br/>
+                                        - La Base de donnée pour la manipulation des données dans la HashMap <br/>
                                         - Les class pour la connexion entre le client et le serveur
                                         
-Le client/serveur :
+Le client/serveur :<br/>
                   - La parallélisation :Le serveur peut gérer plusieurs clients (10) simultanément grâce à un pool de threads( class       "ThreadPooled" ).
                     Les écritures dans la base de donnée sont bien gérées par une structure de type ConcurrentHashMap(class "Data").
                   - Le serveur : La base de donnée contenant les relations clée/valeurs peut-être accédée à distance grâce à un schema client/serveur( les class sont le "Client", le "launchServer" et le "WorkerRunnable").
