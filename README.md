@@ -2,8 +2,8 @@
 TAGL projet
 
 
-Le projet est organisé en deux parties : 
-                                        - La Base de donnée pour la manipulation des données dans la HashMap
+Le projet est organisé en deux parties : \n
+                                        - La Base de donnée pour la manipulation des données dans la HashMap \n
                                         - Les class pour la connexion entre le client et le serveur
                                         
 Le client/serveur :
